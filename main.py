@@ -1,10 +1,13 @@
 import argparse
+
 from csv_manager import CSVManager
 from inventory_manager import InventoryManager
+
 
 def import_csv(data_path):
     """Importer des fichiers CSV depuis un dossier spécifié"""
     CSVManager.import_csv_files(data_path)
+
 
 def search_product(search_term):
     """Rechercher un produit ou une catégorie"""
@@ -17,6 +20,7 @@ def search_product(search_term):
             print(results)
     except Exception as e:
         print(f"Erreur lors de la recherche : {e}")
+
 
 def generate_report(report_type, threshold=None):
     """Générer un rapport"""
@@ -36,6 +40,7 @@ def generate_report(report_type, threshold=None):
             print("Type de rapport non valide.")
     except Exception as e:
         print(f"Erreur lors de la génération du rapport : {e}")
+
 
 def parse_args():
     """Parse les arguments de la ligne de commande"""
@@ -57,6 +62,7 @@ def parse_args():
 
     return parser.parse_args()
 
+
 def main():
     args = parse_args()
 
@@ -68,6 +74,7 @@ def main():
         generate_report(args.report_type, args.threshold)
     else:
         print("Commande non valide. Utilisez --help pour afficher les options disponibles.")
+
 
 if __name__ == "__main__":
     main()

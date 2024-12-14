@@ -1,6 +1,6 @@
-# csv_manager.py
 import glob
 import os
+
 import pandas as pd
 
 
@@ -8,7 +8,6 @@ class CSVManager:
     """
     Classe pour gérer l'importation et la consolidation des fichiers CSV.
     """
-
     CONSOLIDATED_FILE = "consolidated_inventory.csv"
     REQUIRED_HEADER = "product,quantity,price,category"
 

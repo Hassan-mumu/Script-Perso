@@ -2,8 +2,11 @@ import os
 import tempfile
 import unittest
 from unittest.mock import patch
+
 import pandas as pd
+
 from csv_manager import CSVManager
+
 
 class TestCSVManager(unittest.TestCase):
     def setUp(self):
@@ -71,6 +74,7 @@ class TestCSVManager(unittest.TestCase):
         mock_print.assert_any_call("Aucune donnée à consolider.")
         mock_print.reset_mock()
         mock_glob.reset_mock()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,8 +1,11 @@
 import os
 import unittest
 from unittest.mock import patch
+
 import pandas as pd
+
 from inventory_manager import InventoryManager
+
 
 class TestInventoryManager(unittest.TestCase):
     @classmethod
@@ -124,5 +127,7 @@ class TestInventoryManager(unittest.TestCase):
         mock_read_csv.return_value = mock_df
         with self.assertRaises(ValueError):
             InventoryManager.generate_report("invalid_report_type")
+
+
 if __name__ == "__main__":
     unittest.main()
