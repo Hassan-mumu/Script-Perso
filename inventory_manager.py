@@ -1,8 +1,10 @@
 # inventory_manager.py
 # Gestion des recherches et des rapports
 
-import pandas as pd
 import os
+
+import pandas as pd
+
 
 class InventoryManager:
     @staticmethod
@@ -41,36 +43,3 @@ class InventoryManager:
             return low_stock_report
         else:
             raise ValueError("Type de rapport non valide.")
-
-    @staticmethod
-    def run():
-        """
-        Interface utilisateur pour exécuter les fonctionnalités via la ligne de commande.
-        """
-        try:
-            action = input("Choisissez une action : (1) Rechercher un produit, (2) Générer un rapport : ")
-            if action == "1":
-                search_term = input("Entrez le nom du produit ou la catégorie à rechercher : ")
-                results = InventoryManager.search_product(search_term)
-                if results.empty:
-                    print("Aucun résultat trouvé.")
-                else:
-                    print("Résultats de la recherche :")
-                    print(results)
-            elif action == "2":
-                report_choice = input("Générer un rapport par (1) Catégorie ou (2) Produits avec stock faible : ")
-                if report_choice == "1":
-                    report = InventoryManager.generate_report("category")
-                    print("Rapport par catégorie généré avec succès.")
-                    print(report)
-                elif report_choice == "2":
-                    threshold = int(input("Entrez le seuil de stock : "))
-                    report = InventoryManager.generate_report("low_stock", threshold=threshold)
-                    print("Rapport des produits avec stock faible généré avec succès.")
-                    print(report)
-                else:
-                    print("Option invalide.")
-            else:
-                print("Action non valide.")
-        except Exception as e:
-            print(f"Erreur : {e}")
