@@ -1,0 +1,26 @@
+product,quantity,price,category
+Apple iPhone 14,25,999.99,Electronics
+Samsung Galaxy S22,30,899.99,Electronics
+Sony WH-1000XM4,15,349.99,Audio
+Bose QuietComfort 45,20,329.99,Audio
+Asus ROG Laptop,10,1499.99,Computers
+Dell XPS 13,5,1299.99,Computers
+Logitech MX Master 3,50,99.99,Accessories
+Apple Magic Keyboard,40,119.99,Accessories
+HP Envy Printer,12,199.99,Office
+Canon EOS R6,8,2499.99,Cameras
+Nikon Z6 II,6,1999.99,Cameras
+GoPro Hero 10,20,499.99,Cameras
+Dyson V15 Vacuum,15,749.99,Home Appliances
+Instant Pot Duo,100,89.99,Home Appliances
+Philips Hue Bulb,150,49.99,Smart Home
+Amazon Echo Dot,200,39.99,Smart Home
+Nest Thermostat,50,129.99,Smart Home
+Sony PlayStation 5,2,499.99,Gaming
+Microsoft Xbox Series X,3,499.99,Gaming
+Nintendo Switch OLED,10,349.99,Gaming
+KitchenAid Mixer,8,299.99,Kitchen
+Breville Espresso Machine,5,599.99,Kitchen
+Lego Star Wars Set,50,159.99,Toys
+Barbie Dreamhouse,25,199.99,Toys
+Hot Wheels Track Set,75,49.99,Toys
