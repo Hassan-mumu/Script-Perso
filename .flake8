@@ -1,0 +1,12 @@
+[flake8]
+# Ignorer certaines erreurs
+ignore = E203, E266, W503
+
+# Définir la longueur maximale des lignes
+max-line-length = 120
+
+# Spécifier les répertoires ou fichiers à ignorer
+exclude = .git,__pycache__,docs,build
+
+# Activer les plugins Flake8 (si tu en utilises)
+# plugins = flake8-docstrings, flake8-bugbear
