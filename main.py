@@ -1,12 +1,13 @@
-import argparse
-
 from csv_manager import CSVManager
 from inventory_manager import InventoryManager
 
 
 def import_csv(data_path):
     """Importer des fichiers CSV depuis un dossier spécifié"""
-    CSVManager.import_csv_files(data_path)
+    try:
+        CSVManager.import_csv_files(data_path)
+    except Exception as e:
+        print(f"Erreur lors de l'importation des fichiers CSV : {e}")
 
 
 def search_product(search_term):
@@ -42,38 +43,44 @@ def generate_report(report_type, threshold=None):
         print(f"Erreur lors de la génération du rapport : {e}")
 
 
-def parse_args():
-    """Parse les arguments de la ligne de commande"""
-    parser = argparse.ArgumentParser(description="Système de gestion d'inventaire.")
-    subparsers = parser.add_subparsers(dest="command", help="Commandes disponibles")
+def interactive_shell():
+    """Boucle interactive pour exécuter les commandes en continu"""
+    print("Bienvenue dans le shell interactif du système de gestion d'inventaire.")
+    print("Tapez 'help' pour afficher les commandes disponibles. Tapez 'exit' pour quitter.\n")
 
-    # Commande pour importer des fichiers CSV
-    import_parser = subparsers.add_parser("import", help="Importer des fichiers CSV")
-    import_parser.add_argument("data_path", help="Chemin du dossier contenant les fichiers CSV")
+    while True:
+        command = input("inventaire> ").strip().split()
 
-    # Commande pour rechercher un produit
-    search_parser = subparsers.add_parser("search", help="Rechercher un produit")
-    search_parser.add_argument("search_term", help="Nom du produit ou catégorie à rechercher")
+        if not command:
+            continue
 
-    # Commande pour générer un rapport
-    report_parser = subparsers.add_parser("report", help="Générer un rapport")
-    report_parser.add_argument("report_type", choices=["category", "low_stock"], help="Type de rapport à générer")
-    report_parser.add_argument("--threshold", type=int, help="Seuil de stock pour les produits à faible stock")
+        action = command[0].lower()
 
-    return parser.parse_args()
+        if action == "exit":
+            print("Au revoir !")
+            break
+        elif action == "help":
+            print("\nCommandes disponibles :")
+            print("  import <data_path>        Importer les fichiers CSV depuis un dossier spécifié")
+            print("  search <search_term>      Rechercher un produit ou une catégorie")
+            print("  report category           Générer un rapport par catégorie")
+            print("  report low_stock <seuil>  Générer un rapport des produits avec un stock faible")
+            print("  exit                      Quitter le programme\n")
+        elif action == "import" and len(command) == 2:
+            import_csv(command[1])
+        elif action == "search" and len(command) >= 2:
+            search_term = " ".join(command[1:])
+            search_product(search_term)
+        elif action == "report" and len(command) >= 2:
+            report_type = command[1]
+            threshold = int(command[2]) if len(command) == 3 and command[1] == "low_stock" else None
+            generate_report(report_type, threshold)
+        else:
+            print("Commande invalide. Tapez 'help' pour voir les commandes disponibles.")
 
 
 def main():
-    args = parse_args()
-
-    if args.command == "import":
-        import_csv(args.data_path)
-    elif args.command == "search":
-        search_product(args.search_term)
-    elif args.command == "report":
-        generate_report(args.report_type, args.threshold)
-    else:
-        print("Commande non valide. Utilisez --help pour afficher les options disponibles.")
+    interactive_shell()
 
 
 if __name__ == "__main__":
